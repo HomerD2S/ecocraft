@@ -3,1107 +3,356 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EcoCraft | Corporate Economy Survival</title>
-  <meta name="description" content="EcoCraft is a competitive Minecraft survival server with a live economy, corporations, risky cartel gameplay, custom claims, mining progression, virtual spawners, jobs, and leaderboards.">
+  <title>EcoCraft Minecraft Server</title>
   <style>
-    :root {
-      --bg: #07100f;
-      --panel: #0e1716;
-      --panel-2: #121d1b;
-      --line: rgba(219, 230, 219, 0.12);
-      --text: #eef5ed;
-      --muted: #a7b6ae;
-      --soft: #6d7e76;
-      --green: #40d98b;
-      --mint: #8decc0;
-      --gold: #f2c15c;
-      --red: #ef6b5c;
-      --blue: #6fb9ff;
-      --purple: #b58cff;
-      --shadow: 0 22px 70px rgba(0, 0, 0, 0.38);
-    }
-
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      letter-spacing: 0;
+      background: #080d0c;
+      color: #f2f5f0;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     img {
+      width: 100%;
       display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    .site-shell {
-      min-height: 100vh;
-      background:
-        linear-gradient(180deg, rgba(64, 217, 139, 0.08), transparent 18rem),
-        linear-gradient(145deg, rgba(111, 185, 255, 0.08), transparent 34rem),
-        var(--bg);
-    }
-
-    .nav {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 20;
-      border-bottom: 1px solid var(--line);
-      background: rgba(7, 16, 15, 0.84);
-      backdrop-filter: blur(16px);
-    }
-
-    .nav-inner {
-      width: min(1180px, calc(100% - 32px));
-      height: 68px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0;
-    }
-
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(64, 217, 139, 0.5);
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(145deg, rgba(64, 217, 139, 0.22), rgba(242, 193, 92, 0.12));
-      color: var(--mint);
-      font-weight: 900;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 0.93rem;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-cta {
-      border: 1px solid rgba(64, 217, 139, 0.45);
-      background: rgba(64, 217, 139, 0.13);
-      color: var(--mint);
-      border-radius: 8px;
-      padding: 10px 14px;
-      font-weight: 750;
     }
 
     .hero {
-      min-height: 92vh;
-      padding: 112px 0 54px;
-      display: grid;
-      align-items: end;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 68px 0 0;
-      background:
-        linear-gradient(90deg, rgba(7, 16, 15, 0.94), rgba(7, 16, 15, 0.72) 42%, rgba(7, 16, 15, 0.32)),
-        linear-gradient(180deg, rgba(7, 16, 15, 0.08), var(--bg) 94%),
-        url("./money.png") center right / cover no-repeat;
-      opacity: 0.96;
-    }
-
-    .hero-inner {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 360px;
-      gap: 42px;
-      align-items: end;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      width: fit-content;
+      min-height: 72vh;
+      display: flex;
       align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(64, 217, 139, 0.35);
-      background: rgba(8, 34, 24, 0.78);
-      color: var(--mint);
-      border-radius: 999px;
+      padding: 80px 20px;
+      background:
+        linear-gradient(90deg, rgba(8, 13, 12, 0.95), rgba(8, 13, 12, 0.62)),
+        url("./money.png") center / cover no-repeat;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .wrap {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(56, 211, 127, 0.14);
+      border: 1px solid rgba(56, 211, 127, 0.35);
+      color: #7df0ad;
       padding: 8px 12px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
     }
 
     h1 {
+      margin: 0;
+      font-size: clamp(48px, 9vw, 96px);
+      line-height: 0.95;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
       margin: 22px 0 0;
-      max-width: 830px;
-      font-size: clamp(3.8rem, 8vw, 7.8rem);
-      line-height: 0.9;
-      letter-spacing: 0;
+      color: #c8d0ca;
+      font-size: 20px;
+      line-height: 1.5;
     }
 
-    .hero-copy {
-      max-width: 680px;
-      margin: 26px 0 0;
-      color: #c6d2ca;
-      font-size: clamp(1.05rem, 1.8vw, 1.34rem);
-      line-height: 1.6;
-    }
-
-    .hero-actions {
+    .ip-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
+      gap: 10px;
+      margin-top: 30px;
     }
 
-    .ip-box {
-      min-height: 52px;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      border: 1px solid rgba(238, 245, 237, 0.15);
-      background: rgba(11, 21, 20, 0.76);
+    .ip {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
       border-radius: 8px;
-      padding: 8px 8px 8px 18px;
-      box-shadow: var(--shadow);
+      padding: 14px 16px;
+      font-family: Consolas, monospace;
+      font-weight: 700;
     }
 
-    .ip-text {
-      color: var(--text);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .copy-btn,
-    .secondary-btn {
-      min-height: 42px;
+    button {
       border: 0;
-      border-radius: 7px;
-      padding: 0 16px;
-      cursor: pointer;
-      font-weight: 850;
-      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
-    }
-
-    .copy-btn {
-      background: var(--green);
-      color: #062015;
-    }
-
-    .copy-btn:hover,
-    .secondary-btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .secondary-btn {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid rgba(238, 245, 237, 0.17);
-      background: rgba(238, 245, 237, 0.08);
-      color: var(--text);
-    }
-
-    .hero-stats {
-      border: 1px solid var(--line);
-      background: rgba(13, 24, 22, 0.76);
-      backdrop-filter: blur(14px);
       border-radius: 8px;
-      padding: 18px;
-      box-shadow: var(--shadow);
+      background: #38d37f;
+      color: #06140d;
+      padding: 14px 18px;
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 15px;
     }
 
-    .stat {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 12px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .stat:last-child {
-      border-bottom: 0;
-    }
-
-    .stat strong {
-      color: var(--text);
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.4;
-    }
-
-    .stat-number {
-      min-width: 58px;
-      color: var(--gold);
-      font-weight: 900;
-      font-size: 1.55rem;
-      line-height: 1;
-    }
-
-    .section {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 92px 0;
+    section {
+      padding: 64px 20px;
     }
 
     .section-head {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(260px, 440px);
-      gap: 28px;
-      align-items: end;
-      margin-bottom: 34px;
-    }
-
-    .section-kicker {
-      margin: 0 0 10px;
-      color: var(--green);
-      font-size: 0.78rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+      max-width: 720px;
+      margin-bottom: 28px;
     }
 
     h2 {
       margin: 0;
-      max-width: 760px;
-      font-size: clamp(2.2rem, 4vw, 4rem);
-      line-height: 1;
-      letter-spacing: 0;
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: -1px;
     }
 
-    .section-head p,
-    .intro-text {
-      color: var(--muted);
-      line-height: 1.65;
-      margin: 0;
-      font-size: 1.02rem;
+    .section-head p {
+      color: #aeb8b1;
+      line-height: 1.6;
+      font-size: 17px;
+      margin: 12px 0 0;
     }
 
-    .feature-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
 
-    .feature {
-      min-height: 430px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.2s ease, transform 0.2s ease;
-    }
-
-    .feature:hover {
-      transform: translateY(-3px);
-      border-color: rgba(64, 217, 139, 0.42);
-    }
-
-    .feature-image {
-      height: 178px;
-      background: #0a1110;
-      border-bottom: 1px solid var(--line);
+    .card {
+      background: #101817;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
       overflow: hidden;
     }
 
-    .feature-image img {
-      width: 100%;
-      height: 100%;
+    .card img {
+      height: 160px;
       object-fit: cover;
+      background: #17201e;
     }
 
-    .feature-body {
+    .card div {
       padding: 18px;
-      display: flex;
-      flex: 1;
-      flex-direction: column;
     }
 
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-bottom: 13px;
-    }
-
-    .tag {
-      border: 1px solid rgba(238, 245, 237, 0.12);
-      background: rgba(238, 245, 237, 0.06);
-      color: var(--muted);
-      border-radius: 999px;
-      padding: 5px 8px;
-      font-size: 0.72rem;
-      font-weight: 800;
-    }
-
-    .feature h3 {
-      margin: 0;
-      font-size: 1.34rem;
-      letter-spacing: 0;
-    }
-
-    .feature p {
-      color: var(--muted);
-      margin: 12px 0 0;
-      line-height: 1.58;
-      font-size: 0.96rem;
-    }
-
-    .feature ul {
-      margin: auto 0 0;
-      padding: 16px 0 0;
-      list-style: none;
-      color: #c9d5cf;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .feature li {
-      border-top: 1px solid var(--line);
-      padding: 9px 0;
-    }
-
-    .wide {
-      grid-column: span 2;
-    }
-
-    .economy-band {
-      background: linear-gradient(180deg, rgba(18, 29, 27, 0.86), rgba(9, 18, 17, 0.96));
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .loop {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    .loop-step {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(238, 245, 237, 0.045);
-      padding: 18px;
-      min-height: 170px;
-    }
-
-    .loop-step b {
-      display: block;
-      color: var(--gold);
-      font-size: 0.86rem;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .loop-step strong {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-    }
-
-    .loop-step span {
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.5;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .image-panel {
-      min-height: 520px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      background: var(--panel);
-      position: relative;
-    }
-
-    .image-panel img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      inset: 0;
-    }
-
-    .image-panel::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 38%, rgba(7, 16, 15, 0.92));
-    }
-
-    .image-caption {
-      position: absolute;
-      z-index: 1;
-      left: 22px;
-      right: 22px;
-      bottom: 22px;
-    }
-
-    .image-caption strong {
-      display: block;
-      font-size: 1.6rem;
-    }
-
-    .image-caption p {
-      color: #ced9d2;
-      margin: 8px 0 0;
-      line-height: 1.5;
-    }
-
-    .risk-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .risk-item {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-      padding: 20px;
-    }
-
-    .risk-item h3 {
+    .card h3 {
       margin: 0 0 8px;
-      font-size: 1.22rem;
+      font-size: 22px;
     }
 
-    .risk-item p {
+    .card p {
       margin: 0;
-      color: var(--muted);
-      line-height: 1.58;
+      color: #aeb8b1;
+      line-height: 1.5;
+      font-size: 15px;
     }
 
-    .risk-item.accent-red {
-      border-color: rgba(239, 107, 92, 0.32);
+    .quick {
+      background: #0d1413;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    .risk-item.accent-gold {
-      border-color: rgba(242, 193, 92, 0.32);
-    }
-
-    .roadmap {
+    .quick-list {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
-      margin-top: 34px;
     }
 
-    .phase {
-      border: 1px solid var(--line);
-      background: var(--panel);
-      border-radius: 8px;
-      padding: 20px;
-      min-height: 250px;
+    .quick-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 18px;
     }
 
-    .phase small {
+    .quick-item strong {
       display: block;
-      color: var(--green);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 12px;
+      color: #f5c96a;
+      margin-bottom: 6px;
+      font-size: 18px;
     }
 
-    .phase h3 {
-      margin: 0;
-      font-size: 1.24rem;
-    }
-
-    .phase p {
-      margin: 12px 0 0;
-      color: var(--muted);
-      line-height: 1.58;
-      font-size: 0.95rem;
-    }
-
-    .final-cta {
-      padding: 90px 0;
-      text-align: center;
-      border-top: 1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(7, 16, 15, 0.2), rgba(7, 16, 15, 0.9)),
-        url("./leaderboard.png") center / cover no-repeat;
-    }
-
-    .final-cta-inner {
-      width: min(820px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .final-cta h2 {
-      margin: 0 auto;
-    }
-
-    .final-cta p {
-      color: #d4dfd9;
-      line-height: 1.65;
-      font-size: 1.08rem;
-      margin: 18px auto 0;
-      max-width: 650px;
+    .quick-item span {
+      color: #aeb8b1;
+      line-height: 1.45;
+      font-size: 15px;
     }
 
     footer {
-      border-top: 1px solid var(--line);
-      padding: 30px 16px;
-      color: var(--soft);
+      padding: 28px 20px;
       text-align: center;
-      font-size: 0.82rem;
-      line-height: 1.55;
+      color: #7f8983;
+      font-size: 13px;
     }
 
-    .missing-image {
-      display: none;
-    }
-
-    @media (max-width: 980px) {
-      .nav-links {
-        display: none;
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
+      .quick-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
       .hero {
         min-height: auto;
+        padding-top: 90px;
       }
 
-      .hero-inner,
-      .section-head,
-      .split {
+      .grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-stats {
-        max-width: 520px;
+      .card img {
+        height: 190px;
       }
 
-      .feature-grid,
-      .loop,
-      .roadmap {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .wide {
-        grid-column: span 1;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav-inner {
-        width: min(100% - 22px, 1180px);
-      }
-
-      .brand span:last-child {
-        font-size: 0.95rem;
-      }
-
-      .hero {
-        padding-top: 96px;
-      }
-
-      .hero::before {
-        background:
-          linear-gradient(180deg, rgba(7, 16, 15, 0.78), var(--bg) 95%),
-          url("./money.png") center top / cover no-repeat;
-      }
-
-      .ip-box {
+      .ip,
+      button {
         width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 14px;
-      }
-
-      .ip-text {
         text-align: center;
-        white-space: normal;
-        word-break: break-word;
-      }
-
-      .copy-btn,
-      .secondary-btn {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .feature-grid,
-      .loop,
-      .roadmap {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding: 66px 0;
-      }
-
-      .image-panel {
-        min-height: 380px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="site-shell">
-    <nav class="nav" aria-label="Primary navigation">
-      <div class="nav-inner">
-        <a class="brand" href="#top" aria-label="EcoCraft home">
-          <span class="brand-mark">EC</span>
-          <span>EcoCraft</span>
-        </a>
-        <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#economy">Economy</a>
-          <a href="#risk">Risk</a>
-          <a href="#launch">Launch Plan</a>
-          <a class="nav-cta" href="#join">Join Server</a>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-content">
+        <span class="badge">Custom Minecraft Survival</span>
+        <h1>EcoCraft</h1>
+        <p>
+          A survival server with a proper economy, corporations, risky cartel selling,
+          custom claims, mining upgrades, virtual spawners, jobs, and live leaderboards.
+        </p>
+        <div class="ip-row">
+          <span class="ip" id="serverIp">play.ecocraftmc.com</span>
+          <button id="copyBtn" onclick="copyIp()">Copy IP</button>
         </div>
       </div>
-    </nav>
+    </div>
+  </header>
 
-    <header class="hero" id="top">
-      <div class="hero-inner">
-        <div>
-          <div class="eyebrow">Custom economy survival</div>
-          <h1>Build a company. Run the underground. Control the market.</h1>
-          <p class="hero-copy">
-            EcoCraft is survival with consequences: a live supply-and-demand shop, player corporations, wilderness-only cartel production, custom claims, mining tomes, virtual spawners, jobs, and public leaderboards that make every grind visible.
-          </p>
-          <div class="hero-actions" id="join">
-            <div class="ip-box">
-              <span class="ip-text" id="serverIp">play.ecocraftmc.com</span>
-              <button class="copy-btn" id="copyBtn" type="button" onclick="copyIp()">Copy Server IP</button>
-            </div>
-            <a class="secondary-btn" href="#features">Explore Features</a>
-          </div>
-        </div>
-
-        <aside class="hero-stats" aria-label="Server highlights">
-          <div class="stat">
-            <div class="stat-number">01</div>
-            <span><strong>Live market pressure</strong><br>Prices fall when players flood the shop, then recover over time.</span>
-          </div>
-          <div class="stat">
-            <div class="stat-number">02</div>
-            <span><strong>Risk-based cartel selling</strong><br>Dealer mode exposes you, spawns buyers, and can leak your coordinates.</span>
-          </div>
-          <div class="stat">
-            <div class="stat-number">03</div>
-            <span><strong>Progression money sinks</strong><br>Mining tomes, EcoSpawners, shop plots, labs, claims, and upgrades all pull money back out.</span>
-          </div>
-        </aside>
-      </div>
-    </header>
-
-    <main>
-      <section class="section" id="features">
+  <main>
+    <section>
+      <div class="wrap">
         <div class="section-head">
-          <div>
-            <p class="section-kicker">Custom Systems</p>
-            <h2>Not a generic survival setup with a few commands bolted on.</h2>
-          </div>
-          <p>
-            Each system feeds another one. Jobs create the early economy, the market reacts to supply, corporations compete on wealth, cartel selling adds risk, and progression shops give players expensive goals worth chasing.
-          </p>
+          <h2>Custom stuff we have built</h2>
+          <p>No massive essay. These are the main systems players will actually notice when they join.</p>
         </div>
 
-        <div class="feature-grid">
-          <article class="feature wide">
-            <div class="feature-image">
-              <img src="./cartel.png" alt="EcoCartel underground drug economy" onerror="this.classList.add('missing-image')">
-            </div>
-            <div class="feature-body">
-              <div class="tag-row">
-                <span class="tag">/drugs</span>
-                <span class="tag">/dealer</span>
-                <span class="tag">High risk</span>
-              </div>
+        <div class="grid">
+          <article class="card">
+            <img src="./cartel.png" alt="EcoCartel">
+            <div>
               <h3>EcoCartel</h3>
-              <p>
-                Buy seeds from a custom menu, grow contraband outside protected land, process raw product in lab stations, then sell through street dealing. Dealer mode makes you glow, spawns one buyer at a time, and brings the risk of undercover cops or global coordinate leaks.
-              </p>
-              <ul>
-                <li>Street dealing is the only way to sell packaged product.</li>
-                <li>Boost zones can pay more for dangerous public selling areas.</li>
-                <li>Top sellers and per-drug leaders feed spawn holograms and Discord alerts.</li>
-              </ul>
+              <p>Grow drugs in the wild, process them in labs, then use /dealer to sell. You glow while dealing and can get busted or exposed.</p>
             </div>
           </article>
 
-          <article class="feature wide">
-            <div class="feature-image">
-              <img src="./money.png" alt="EcoMarket dynamic economy" onerror="this.classList.add('missing-image')">
-            </div>
-            <div class="feature-body">
-              <div class="tag-row">
-                <span class="tag">Live prices</span>
-                <span class="tag">Market surges</span>
-                <span class="tag">Spawn ticker</span>
-              </div>
+          <article class="card">
+            <img src="./money.png" alt="EcoMarket">
+            <div>
               <h3>EcoMarket</h3>
-              <p>
-                The shop is not static. Sell too much of one item and the price drops for everyone. Quiet items recover over time, while admin-run surges can make copper, iron, or other resources suddenly worth chasing.
-              </p>
-              <ul>
-                <li>Reads real shop transactions and updates prices in-game.</li>
-                <li>Market holograms show rising, falling, and surged items.</li>
-                <li>Discord posts turn market moves into server-wide moments.</li>
-              </ul>
+              <p>Prices move with the server. If everyone sells iron, iron drops. Admin market surges can make items hot for a weekend.</p>
             </div>
           </article>
 
-          <article class="feature">
-            <div class="feature-image">
-              <img src="./corp.png" alt="EcoCorp corporations" onerror="this.classList.add('missing-image')">
-            </div>
-            <div class="feature-body">
-              <div class="tag-row">
-                <span class="tag">/corp</span>
-                <span class="tag">/gc</span>
-              </div>
+          <article class="card">
+            <img src="./corp.png" alt="EcoCorp">
+            <div>
               <h3>EcoCorp</h3>
-              <p>Found a corporation, invite members, use corp chat, share selected company claims, and climb a wealth leaderboard based on member balances.</p>
-              <ul>
-                <li>Corp tags appear through PlaceholderAPI/TAB.</li>
-                <li>Corp wealth is tracked for holograms and Discord alerts.</li>
-              </ul>
+              <p>Create a corporation, invite members, share selected corp claims, use corp chat, and compete for top wealth.</p>
             </div>
           </article>
 
-          <article class="feature">
-            <div class="feature-image">
-              <img src="./claim.png" alt="EcoClaim protection" onerror="this.classList.add('missing-image')">
-            </div>
-            <div class="feature-body">
-              <div class="tag-row">
-                <span class="tag">/claims</span>
-                <span class="tag">Anti-grief</span>
-              </div>
+          <article class="card">
+            <img src="./claim.png" alt="EcoClaim">
+            <div>
               <h3>EcoClaim</h3>
-              <p>Custom land protection designed for a PvP-outside-claims server, with protection against buckets, projectiles, vehicles, mobs, pistons, and common grief routes.</p>
-              <ul>
-                <li>Personal claims stay personal.</li>
-                <li>Corp sharing is deliberate, not automatic theft bait.</li>
-              </ul>
+              <p>Simple land claiming with protection against the usual grief tricks like buckets, projectiles, mobs, and pistons.</p>
             </div>
           </article>
 
-          <article class="feature">
-            <div class="feature-image">
-              <img src="./mine.png" alt="EcoMining pickaxe tomes" onerror="this.classList.add('missing-image')">
-            </div>
-            <div class="feature-body">
-              <div class="tag-row">
-                <span class="tag">Tomes I-III</span>
-                <span class="tag">Anvil upgrades</span>
-              </div>
+          <article class="card">
+            <img src="./mine.png" alt="EcoMining">
+            <div>
               <h3>EcoMining</h3>
-              <p>Upgrade individual pickaxes with Mining Tomes. Tier I mines vertical trenches, Tier II mines flat 3x3 planes, and Tier III opens a 3x3x3 cube.</p>
-              <ul>
-                <li>No Tier IV auto-collect.</li>
-                <li>Hardness and preferred-tool checks block obsidian and ancient debris exploits.</li>
-              </ul>
+              <p>Upgrade pickaxes with Mining Tomes. Tier I, II, and III unlock better mining shapes. No Tier IV auto-collect.</p>
             </div>
           </article>
 
-          <article class="feature">
-            <div class="feature-image">
-              <img src="./spawner.png" alt="EcoSpawners virtual loot" onerror="this.classList.add('missing-image')">
-            </div>
-            <div class="feature-body">
-              <div class="tag-row">
-                <span class="tag">No mob lag</span>
-                <span class="tag">Upgradeable</span>
-              </div>
+          <article class="card">
+            <img src="./spawner.png" alt="EcoSpawners">
+            <div>
               <h3>EcoSpawners</h3>
-              <p>EcoSpawners are static loot silos, not entity factories. They generate drops into internal storage while chunks are active, with separate speed and storage upgrades.</p>
-              <ul>
-                <li>Creeper, Blaze, and Wither Skeleton are premium sinks.</li>
-                <li>Hoppers can pull output for sorting systems.</li>
-              </ul>
+              <p>Spawner blocks generate loot into storage instead of spawning mobs everywhere. Less lag, more useful progression.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="./jobs.png" alt="Jobs">
+            <div>
+              <h3>Jobs</h3>
+              <p>Earn money by playing normally. Mining, farming, hunting, fishing, building, and more all feed into progression.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="./leaderboard.png" alt="Leaderboards">
+            <div>
+              <h3>Leaderboards</h3>
+              <p>Spawn holograms and Discord alerts show top players, top corps, market moves, cartel sellers, and milestones.</p>
             </div>
           </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="economy-band" id="economy">
-        <div class="section">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">Server Economy</p>
-              <h2>Money has routes in, routes out, and public pressure.</h2>
-            </div>
-            <p>
-              The server is built around avoiding the usual week-two inflation collapse. Players can earn through normal play, but major power systems cost serious money and market prices punish over-farming.
-            </p>
-          </div>
-
-          <div class="loop">
-            <div class="loop-step">
-              <b>Earn</b>
-              <strong>Jobs pay for actions</strong>
-              <span>Players earn by mining, farming, hunting, fishing, building, and more, with level milestones posted to Discord.</span>
-            </div>
-            <div class="loop-step">
-              <b>React</b>
-              <strong>The market moves</strong>
-              <span>Oversold items crash, quiet items recover, and live market surges give players reasons to log in.</span>
-            </div>
-            <div class="loop-step">
-              <b>Invest</b>
-              <strong>Buy progression</strong>
-              <span>Mining tomes and EcoSpawners are expensive shop goals rather than admin-only handouts.</span>
-            </div>
-            <div class="loop-step">
-              <b>Risk</b>
-              <strong>Sell contraband</strong>
-              <span>Dealer mode pays well, but glowing players, cops, and coordinate leaks create danger.</span>
-            </div>
-            <div class="loop-step">
-              <b>Compete</b>
-              <strong>Leaderboards talk</strong>
-              <span>Spawn holograms and Discord alerts highlight top corps, sellers, job progress, and market events.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="risk">
-        <div class="split">
-          <div class="image-panel">
-            <img src="./leaderboard.png" alt="EcoCraft leaderboard holograms" onerror="this.classList.add('missing-image')">
-            <div class="image-caption">
-              <strong>Everyone can see who is winning.</strong>
-              <p>Leaderboards, holograms, Discord alerts, and player heads turn ordinary grinding into visible competition.</p>
-            </div>
-          </div>
-
-          <div>
-            <p class="section-kicker">Player Stories</p>
-            <h2>Designed to create moments people talk about.</h2>
-            <p class="intro-text" style="margin-top:18px">
-              EcoCraft’s best systems are not just menus. They create pressure: do you sell now while glowing, hold for a market surge, invest in a spawner, join a corporation, or risk a high-value cartel route?
-            </p>
-
-            <div class="risk-list" style="margin-top:24px">
-              <div class="risk-item accent-red">
-                <h3>Cartel exposure</h3>
-                <p>Dealer mode marks you through walls, blocks easy escape routes, and can globally reveal your location if someone grasses.</p>
-              </div>
-              <div class="risk-item accent-gold">
-                <h3>Corporate competition</h3>
-                <p>Corp wealth, top sellers, playtime, jobs, and money leaderboards are designed to create rivalries without staff needing to force events.</p>
-              </div>
-              <div class="risk-item">
-                <h3>Spawn shops and progression</h3>
-                <p>Player shops, rentable plots, mining tomes, and EcoSpawners give players long-term goals beyond simply building a base and logging out.</p>
-              </div>
-              <div class="risk-item">
-                <h3>Discord integration</h3>
-                <p>Market moves, new corps, cartel busts, mining upgrades, spawner placements, and leaderboard changes can all post as rich Discord alerts.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
+    <section class="quick">
+      <div class="wrap">
         <div class="section-head">
-          <div>
-            <p class="section-kicker">Core Progression</p>
-            <h2>The server gives players something expensive to want.</h2>
-          </div>
-          <p>
-            Progression is handled through controlled acquisition, not random clutter. Tome shops and spawner shops turn money into capability, while upgrade costs keep late-game cash from becoming meaningless.
-          </p>
+          <h2>What makes it different?</h2>
+          <p>It is still Minecraft survival, just with more reasons to actually care what other players are doing.</p>
         </div>
 
-        <div class="feature-grid">
-          <article class="feature wide">
-            <div class="feature-image">
-              <img src="./jobs.png" alt="EcoCraft jobs progression" onerror="this.classList.add('missing-image')">
-            </div>
-            <div class="feature-body">
-              <div class="tag-row">
-                <span class="tag">All jobs</span>
-                <span class="tag">Levels matter</span>
-                <span class="tag">Milestone alerts</span>
-              </div>
-              <h3>Jobs without the noise</h3>
-              <p>
-                Jobs are less about intrusive quests and more about rewarding normal play. Players earn from actions, still level up for status and leaderboards, and get subtle visual money feedback while they work.
-              </p>
-              <ul>
-                <li>Every player can participate without hard job-slot limits.</li>
-                <li>Level 10, 20, 30 and higher milestones can post to Discord.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="feature wide">
-            <div class="feature-image">
-              <img src="./mine.png" alt="Mining tome progression" onerror="this.classList.add('missing-image')">
-            </div>
-            <div class="feature-body">
-              <div class="tag-row">
-                <span class="tag">$5k</span>
-                <span class="tag">$25k</span>
-                <span class="tag">$100k</span>
-              </div>
-              <h3>Mining Tomes I-III</h3>
-              <p>
-                Tomes are sold through progression shop chests. Players must upgrade in order using an anvil, so powerful mining shapes are earned step by step.
-              </p>
-              <ul>
-                <li>Tier I: 3x1 vertical trench.</li>
-                <li>Tier II: 3x3 flat plane.</li>
-                <li>Tier III: 3x3x3 cube excavation.</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="economy-band" id="launch">
-        <div class="section">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">Launch Plan</p>
-              <h2>Start focused, then add events once the economy breathes.</h2>
-            </div>
-            <p>
-              The strongest launch is not dumping every future idea in on day one. Open with the core economy loop, watch the first week, then use market surges and cartel/corp events to steer player attention.
-            </p>
+        <div class="quick-list">
+          <div class="quick-item">
+            <strong>Risk vs reward</strong>
+            <span>The best cartel money means leaving safe land, glowing through walls, and risking your location being leaked.</span>
           </div>
-
-          <div class="roadmap">
-            <div class="phase">
-              <small>Launch</small>
-              <h3>Core Economy Season</h3>
-              <p>EcoMarket, EcoCartel, EcoCorp, EcoClaim, Jobs, EcoMining, EcoSpawners, shop plots, holograms, and Discord alerts active.</p>
-            </div>
-            <div class="phase">
-              <small>Week 1</small>
-              <h3>Market Surges</h3>
-              <p>Run live demand events like copper, iron, blaze rods, or building blocks to focus the economy and create weekend goals.</p>
-            </div>
-            <div class="phase">
-              <small>Week 2</small>
-              <h3>Cartel Heat</h3>
-              <p>Increase public risk with boosted sell zones, announced danger areas, and special cartel leaderboard races.</p>
-            </div>
-            <div class="phase">
-              <small>Season End</small>
-              <h3>Corp Winners</h3>
-              <p>Lock corporate wealth standings, reward top companies, and give permanent spawn recognition before the next season begins.</p>
-            </div>
+          <div class="quick-item">
+            <strong>Player economy</strong>
+            <span>The market reacts to player selling, so farming the same thing forever becomes worse over time.</span>
+          </div>
+          <div class="quick-item">
+            <strong>Long-term goals</strong>
+            <span>Mining tomes, EcoSpawners, corp wealth, shops, claims, and leaderboards give players things to grind toward.</span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  </main>
 
-      <section class="final-cta">
-        <div class="final-cta-inner">
-          <p class="section-kicker">EcoCraft</p>
-          <h2>Survival where the economy fights back.</h2>
-          <p>
-            Build safely, trade smart, join a corporation, run the underground, or become the player everyone sees on the boards.
-          </p>
-          <div class="hero-actions" style="justify-content:center">
-            <div class="ip-box">
-              <span class="ip-text">play.ecocraftmc.com</span>
-              <button class="copy-btn" type="button" onclick="copyIp()">Copy Server IP</button>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div>Copyright 2026 EcoCraft Project. All rights reserved.</div>
-      <div>Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</div>
-    </footer>
-  </div>
+  <footer>
+    EcoCraft &copy; 2026. Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.
+  </footer>
 
   <script>
     function copyIp() {
-      const ip = document.getElementById("serverIp").innerText.trim();
-      const buttons = document.querySelectorAll(".copy-btn");
-
-      function showCopied() {
-        buttons.forEach((button) => {
-          const original = button.dataset.original || button.innerText;
-          button.dataset.original = original;
-          button.innerText = "Copied";
-          setTimeout(() => {
-            button.innerText = original;
-          }, 1600);
-        });
-      }
-
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(ip).then(showCopied);
-        return;
-      }
-
-      const temp = document.createElement("textarea");
-      temp.value = ip;
-      temp.style.position = "fixed";
-      temp.style.opacity = "0";
-      document.body.appendChild(temp);
-      temp.focus();
-      temp.select();
-      try {
-        document.execCommand("copy");
-        showCopied();
-      } finally {
-        document.body.removeChild(temp);
-      }
+      const ip = document.getElementById("serverIp").innerText;
+      navigator.clipboard.writeText(ip).then(() => {
+        const btn = document.getElementById("copyBtn");
+        btn.innerText = "Copied";
+        setTimeout(() => btn.innerText = "Copy IP", 1500);
+      });
     }
   </script>
 </body>
