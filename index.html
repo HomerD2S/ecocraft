@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoServer | Corporate & Cartel Survival</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #0b0f19; color: #f3f4f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .gradient-text { background: linear-gradient(135deg, #3b82f6, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .feature-card { background: #111827; border: 1px solid #1f2937; transition: all 0.3s ease; }
+        .feature-card:hover { transform: translateY(-5px); border-color: #10b981; }
+    </style>
+</head>
+<body>
+
+    <header class="relative overflow-hidden py-24 px-4 text-center border-b border-gray-800">
+        <div class="max-w-4xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 bg-emerald-950/50 px-3 py-1 rounded-full border border-emerald-800/50">Project Launching Soon</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold mt-6 tracking-tight">Welcome to <span class="gradient-text">EcoServer</span></h1>
+            <p class="mt-6 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+                A high-performance corporate economy and underground cartel survival experience. Build corporations, optimize operations, and control the market.
+            </p>
+            
+            <div class="mt-10 inline-flex flex-col sm:flex-row items-center gap-4 bg-gray-900 p-2 rounded-xl border border-gray-800">
+                <span class="font-mono text-gray-300 px-4 font-bold" id="serverIp">play.yourdomain.com</span>
+                <button onclick="copyIp()" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-lg transition flex items-center justify-center gap-2 cursor-pointer" id="copyBtn">
+                    <i class="fa-regular fa-copy"></i> Copy IP
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-20">
+        <h2 class="text-3xl font-bold text-center mb-12">Core Server Mechanics</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="feature-card p-6 rounded-xl">
+                <div class="text-emerald-400 text-2xl mb-4"><i class="fa-solid fa-chart-line"></i></div>
+                <h3 class="text-xl font-bold mb-2">Living Economy</h3>
+                <p class="text-gray-400 text-sm">Shop prices rise and fall based on real player supply and demand. Flood the market and watch the price tank. Track trends via a live spawn ticker.</p>
+            </div>
+
+            <div class="feature-card p-6 rounded-xl">
+                <div class="text-blue-400 text-2xl mb-4"><i class="fa-solid fa-building"></i></div>
+                <h3 class="text-xl font-bold mb-2">Corporations</h3>
+                <p class="text-gray-400 text-sm">Found a company with friends. Share access to corp-owned land automatically, flash your corp tag in Tab/Chat, and dominate the live wealth leaderboard.</p>
+            </div>
+
+            <div class="feature-card p-6 rounded-xl">
+                <div class="text-red-400 text-2xl mb-4"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3 class="text-xl font-bold mb-2">Custom Land Claiming</h3>
+                <p class="text-gray-400 text-sm">Built from scratch to block griefing vectors (buckets, arrows, pistons, endermen). Start with 256 free blocks and purchase more. PvP remains active outside claims.</p>
+            </div>
+
+            <div class="feature-card p-6 rounded-xl">
+                <div class="text-amber-400 text-2xl mb-4"><i class="fa-solid fa-store"></i></div>
+                <h3 class="text-xl font-bold mb-2">Player Shops</h3>
+                <p class="text-gray-400 text-sm">Rent premium market stalls at spawn or build storefronts inside your claim. The admin shop sets the price floor—everything above is player-driven trade.</p>
+            </div>
+
+            <div class="feature-card p-6 rounded-xl">
+                <div class="text-purple-400 text-2xl mb-4"><i class="fa-solid fa-skull-crossbones"></i></div>
+                <h3 class="text-xl font-bold mb-2">The Cartel</h3>
+                <p class="text-gray-400 text-sm">Grow and process 6 illegal substances to sell to street dealers at a 1.5x premium. Beware: dealing builds "heat" from undercover NPC cops. Get caught, lose it all.</p>
+            </div>
+
+            <div class="feature-card p-6 rounded-xl">
+                <div class="text-cyan-400 text-2xl mb-4"><i class="fa-solid fa-pickaxe"></i></div>
+                <h3 class="text-xl font-bold mb-2">EcoMining Upgrades</h3>
+                <p class="text-gray-400 text-sm">4 sequential Mining Tome tiers fused at anvils with XP. Progress from a Tier I (3x1 vertical trench) to a Tier IV (3x3x3 cube with automated inventory collection).</p>
+            </div>
+
+            <div class="feature-card p-6 rounded-xl">
+                <div class="text-orange-400 text-2xl mb-4"><i class="fa-solid fa-box"></i></div>
+                <h3 class="text-xl font-bold mb-2">EcoSpawners</h3>
+                <p class="text-gray-400 text-sm">6 lag-free spawner types generating passive loot directly into storage. Upgrade speed/storage via the Progression Shop. Wither Skeleton spawners are strictly limited to one per player.</p>
+            </div>
+
+            <div class="feature-card p-6 rounded-xl">
+                <div class="text-yellow-400 text-2xl mb-4"><i class="fa-solid fa-briefcase"></i></div>
+                <h3 class="text-xl font-bold mb-2">13 Passive Jobs</h3>
+                <p class="text-gray-400 text-sm">Earn steady income doing what you love. Choose from 13 fully integrated professions including Miner, Farmer, Hunter, Fisherman, Builder, and Enchanter.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <section class="bg-gray-900/50 border-y border-gray-800 py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">Server Deployment Roadmap</h2>
+            <div class="space-y-12 relative before:absolute before:inset-0 before:left-4 md:before:left-1/2 before:w-0.5 before:bg-gray-800">
+                
+                <div class="relative flex flex-col md:flex-row items-start md:justify-between">
+                    <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-emerald-500 border-4 border-gray-900 z-10"></div>
+                    <div class="w-full md:w-5/12 pl-10 md:pl-0 md:text-right">
+                        <span class="text-sm font-bold text-emerald-400">Phase 1</span>
+                        <h3 class="text-xl font-bold mt-1">Official Launch</h3>
+                        <p class="text-gray-400 text-sm mt-2">All core systems live: Living Economy, Corporations, Claims, 13 Jobs, EcoSpawners, and EcoMining tiers. Launch date dropping shortly.</p>
+                    </div>
+                    <div class="hidden md:block w-5/12"></div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row items-start md:justify-between md:flex-row-reverse">
+                    <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-gray-900 z-10"></div>
+                    <div class="w-full md:w-5/12 pl-10 md:pl-0 md:text-left">
+                        <span class="text-sm font-bold text-blue-400">Week 2</span>
+                        <h3 class="text-xl font-bold mt-1">The Syndicate Update</h3>
+                        <p class="text-gray-400 text-sm mt-2">Drug sales turn into physical "Cash Bundles". Move your dirty money to public Laundromats to wash it while global server alerts notify bounty hunters of your location.</p>
+                    </div>
+                    <div class="hidden md:block w-5/12"></div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row items-start md:justify-between">
+                    <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-purple-500 border-4 border-gray-900 z-10"></div>
+                    <div class="w-full md:w-5/12 pl-10 md:pl-0 md:text-right">
+                        <span class="text-sm font-bold text-purple-400">Week 3</span>
+                        <h3 class="text-xl font-bold mt-1">High-Stakes & Bounties</h3>
+                        <p class="text-gray-400 text-sm mt-2">The Casino goes live featuring custom slot machines and scratch cards. Daily Ender Dragon resets activate with a global cash kill bounty on the board.</p>
+                    </div>
+                    <div class="hidden md:block w-5/12"></div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row items-start md:justify-between md:flex-row-reverse">
+                    <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-amber-500 border-4 border-gray-900 z-10"></div>
+                    <div class="w-full md:w-5/12 pl-10 md:pl-0 md:text-left">
+                        <span class="text-sm font-bold text-amber-400">Week 4</span>
+                        <h3 class="text-xl font-bold mt-1">Season 1 Conclusion</h3>
+                        <p class="text-gray-400 text-sm mt-2">Corporation Season 1 wraps up. Top companies earn major reward packages and permanent display trophies at Spawn. Season 2 starts instantly.</p>
+                    </div>
+                    <div class="hidden md:block w-5/12"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-8 text-gray-600 text-xs border-t border-gray-900">
+        <p>&copy; 2026 EcoServer. All rights reserved. Not affiliated with Mojang Studios.</p>
+    </footer>
+
+    <script>
+        function copyIp() {
+            const ipText = document.getElementById("serverIp").innerText;
+            navigator.clipboard.writeText(ipText).then(() => {
+                const btn = document.getElementById("copyBtn");
+                btn.innerHTML = '<i class="fa-solid fa-check text-emerald-400"></i> Copied!';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy IP';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
