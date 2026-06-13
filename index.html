@@ -28,6 +28,25 @@
                     Copy Server IP
                 </button>
             </div>
+
+            <!-- Countdown Timer Section -->
+            <div id="countdown-container" class="mt-12 flex justify-center gap-4 text-center">
+                <div class="bg-slate-900/60 backdrop-blur-md p-4 rounded-xl border border-gray-800 shadow-xl min-w-[90px]">
+                    <div id="cd-hours" class="text-4xl font-bold text-emerald-400 font-mono">00</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-widest mt-1 font-bold">Hours</div>
+                </div>
+                <div class="text-3xl font-bold text-gray-600 flex flex-col justify-center pb-5">:</div>
+                <div class="bg-slate-900/60 backdrop-blur-md p-4 rounded-xl border border-gray-800 shadow-xl min-w-[90px]">
+                    <div id="cd-minutes" class="text-4xl font-bold text-emerald-400 font-mono">00</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-widest mt-1 font-bold">Mins</div>
+                </div>
+                <div class="text-3xl font-bold text-gray-600 flex flex-col justify-center pb-5">:</div>
+                <div class="bg-slate-900/60 backdrop-blur-md p-4 rounded-xl border border-gray-800 shadow-xl min-w-[90px]">
+                    <div id="cd-seconds" class="text-4xl font-bold text-emerald-400 font-mono">00</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-widest mt-1 font-bold">Secs</div>
+                </div>
+            </div>
+            <!-- End Countdown -->
         </div>
     </header>
 
@@ -154,6 +173,7 @@
     </footer>
 
     <script>
+        // Copy IP Script
         function copyIp() {
             const ipText = document.getElementById("serverIp").innerText;
             navigator.clipboard.writeText(ipText).then(() => {
@@ -168,6 +188,28 @@
                 }, 2000);
             });
         }
+
+        // Countdown Script (Set to June 13, 2026 20:00:00 BST / GMT+0100)
+        const launchDate = new Date("June 13, 2026 20:00:00 GMT+0100").getTime();
+
+        const countdownTimer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById("countdown-container").innerHTML = '<div class="text-2xl font-bold text-emerald-400 bg-slate-900/80 backdrop-blur-md px-8 py-4 rounded-xl border border-emerald-800/50 shadow-[0_0_20px_rgba(16,185,129,0.3)] animate-pulse">Server is Live! Join Now!</div>';
+                return;
+            }
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("cd-hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("cd-minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("cd-seconds").innerText = seconds.toString().padStart(2, '0');
+        }, 1000);
     </script>
 </body>
 </html>
